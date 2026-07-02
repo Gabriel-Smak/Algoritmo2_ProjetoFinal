@@ -1,11 +1,23 @@
+/*
+
+
+             ╔═══════════════════╗
+ ╔═══════════║ Projeto Final (C) ║═══════════╗
+             ╚═══════════════════╝
+  
+   * Disciplina: Algoritmos 2.
+  
+   * Aluno: Gabriel Henrique Smak de Andrade.
+  
+   * Professor: Paulo Henrique Bueno Lopes.
+  
+ ╚═══════════════════════════════════════════╝
 
 
 
-
-
-// ╔════════════════╗
-// ║  Bibliotecas:  ║
-// ╚════════════════╝
+   ╔════════════════╗
+   ║  Bibliotecas:  ║
+   ╚════════════════╝*/
 
     #include <stdio.h>
     #include <string.h>
@@ -330,7 +342,7 @@
 
                 if (caixaAtual == totalLimites && quantidadeDeCaixasImpressas <= 9) {
                     if (alterarFundo) {
-                        printf(reset esmaecer verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacao, 1);
+                      printf(reset esmaecer verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacao, 1);
                             printf(esmaecer verde"║                                                            ║"reset inicio desce, localizacao, 1);
                             printf(esmaecer verde"║                              │                             ║"reset inicio desce, localizacao, 1);
                             printf(esmaecer verde"║                           ───┼───                          ║"reset inicio desce, localizacao, 1);
@@ -338,7 +350,7 @@
                             printf(esmaecer verde"║                                                            ║"reset inicio desce, localizacao, 1);
                             printf(esmaecer verde"╚════════════════════════════════════════════════════════════╝"reset inicio sobe, localizacao, 6);
                     } else {
-                                printf(reset verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacao, 1);
+                              printf(reset verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacao, 1);
                                     printf(verde"║                                                            ║"reset inicio desce, localizacao, 1);
                                     printf(verde"║                              │                             ║"reset inicio desce, localizacao, 1);
                                     printf(verde"║                           ───┼───                          ║"reset inicio desce, localizacao, 1);
@@ -348,7 +360,7 @@
                             }
                 } else if(quantidadeDeCaixasImpressas <= 9){
                     if (alterarFundo) {
-                        printf(reset BRANCO "╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
+                       printf(reset BRANCO "╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
                             printf( BRANCO "║" inicio "║"   inicio  "║"     inicio    "║"    inicio     "║" inicio desce, localizacao + 11, localizacao + 25, localizacao + 43, localizacao + 61, localizacao, 1);
                             printf( BRANCO "╠══════════╬═════════════╩═════════════════╩═════════════════╣" inicio desce, localizacao, 1);
                             printf( BRANCO "║" inicio "║"                                     inicio    "║" inicio desce, localizacao + 11, localizacao + 61, localizacao, 1);
@@ -356,7 +368,7 @@
                             printf( BRANCO "║" inicio "║"                                     inicio    "║" inicio desce, localizacao + 11, localizacao + 61, localizacao, 1);
                             printf( BRANCO "╚══════════╩═════════════════════════════════════════════════╝" inicio sobe reset,  localizacao, 6);
                     } else {
-                        printf(reset esmaecer"╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
+                      printf(reset esmaecer"╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
                             printf(esmaecer"║" inicio "║"   inicio  "║"     inicio    "║"    inicio     "║" inicio desce, localizacao + 11, localizacao + 25, localizacao + 43, localizacao + 61, localizacao, 1);
                             printf(esmaecer"╠══════════╬═════════════╩═════════════════╩═════════════════╣" inicio desce, localizacao, 1);
                             printf(esmaecer"║" inicio "║"                                     inicio    "║" inicio desce, localizacao + 11, localizacao + 61, localizacao, 1);
@@ -369,7 +381,7 @@
                 Sleep(Tempo_Pausa_Menu_Adicao);
             }
 
-                        printf(reset BRANCO "╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
+                       printf(reset BRANCO "╔══════════╦═════════════╦═════════════════╦═════════════════╗" inicio desce, localizacao, 1);
                             printf( BRANCO "║" inicio "║"   inicio  "║"     inicio    "║"    inicio     "║" inicio desce, localizacao + 11, localizacao + 25, localizacao + 43, localizacao + 61, localizacao, 1);
                             printf( BRANCO "╠══════════╬═════════════╩═════════════════╩═════════════════╣" inicio desce, localizacao, 1);
                             printf( BRANCO "║" inicio "║"                                     inicio    "║" inicio desce, localizacao + 11, localizacao + 61, localizacao, 1);
@@ -410,7 +422,7 @@
                     gotoxy(0, linhaAbsolutaAntiga);
                     
                     if (caixaAntiga == totalDeCaixas && quantidadeDeCaixasImpressas <= 9) {
-                        printf(reset inicio esmaecer verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacaoAntiga, localizacaoAntiga,1);
+                       printf(reset inicio esmaecer verde"╔════════════════════════════════════════════════════════════╗"reset inicio desce, localizacaoAntiga, localizacaoAntiga,1);
                                     printf(esmaecer verde"║                                                            ║"reset inicio desce, localizacaoAntiga, 1);
                                     printf(esmaecer verde"║                              │                             ║"reset inicio desce, localizacaoAntiga, 1);
                                     printf(esmaecer verde"║                           ───┼───                          ║"reset inicio desce, localizacaoAntiga, 1);
@@ -447,7 +459,7 @@
                         int linhaAbsolutaAtual = Y_Origem + (andarAtual * 9);
                         gotoxy(0, linhaAbsolutaAtual);
                         
-                        printf(reset esmaecer "╔══════════╦═════════════╦═════════════════╦═════════════════╗" reset inicio desce, localizacao, 1);
+                      printf(reset esmaecer "╔══════════╦═════════════╦═════════════════╦═════════════════╗" reset inicio desce, localizacao, 1);
                             printf(esmaecer "║" inicio "║"   inicio  "║"     inicio    "║"    inicio     "║" reset inicio desce, localizacao + 11, localizacao + 25, localizacao + 43, localizacao + 61, localizacao, 1);
                             printf(esmaecer "╠══════════╬═════════════╩═════════════════╩═════════════════╣" reset inicio desce, localizacao, 1);
                             printf(esmaecer "║" inicio "║"                                    inicio     "║" reset inicio desce, localizacao + 11, localizacao + 61, localizacao, 1);
