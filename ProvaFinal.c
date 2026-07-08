@@ -13,6 +13,8 @@
 #define sobe        "\033[%dA"
 #define desce       "\033[%dB"
 #define inicio      "\033[%dG"
+#define fvermelho   "\033[48;5;1m\033[38;5;0m"
+#define fverde      "\033[38;5;0m\033[48;5;84m"
 
 
 #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
@@ -52,7 +54,7 @@ void imprimirMenu() {
 
 
 
-void validarNome(char *nomeReferido){
+void validarNome(char *nomeReferido, int localizacao){
 
     char  caracterDigitado = EOF;
     int   indiceDoVetor = 0;
@@ -84,7 +86,7 @@ void validarNome(char *nomeReferido){
         } else { continue; }
 
         nomeReferido[indiceDoVetor] = 0;
-        printf(inicio "                              " inicio "%s", 25, 25, nomeReferido);
+        printf(inicio "                              " inicio "%s", localizacao, localizacao, nomeReferido);
 
         while(_kbhit()) _getch();
     }
@@ -95,7 +97,7 @@ void validarNome(char *nomeReferido){
 
 
 
-void validarCPF(char * CPFreferido){
+void validarCPF(char * CPFreferido, int localizacao){
     char  caracterDigitado = EOF;
     int   indiceDoVetor = 0;
 
@@ -120,7 +122,7 @@ void validarCPF(char * CPFreferido){
         } else { continue; }
 
         CPFreferido[indiceDoVetor] = 0;
-        printf(inicio"               " inicio, 25, 25);
+        printf(inicio"               " inicio, localizacao, localizacao);
 
         int i = 0;
         for(; i < indiceDoVetor; i++){
@@ -136,7 +138,7 @@ void validarCPF(char * CPFreferido){
 
 
 
-void validarDataDeNascimento(char * dataReferida){
+void validarDataDeNascimento(char * dataReferida, int localizacao){
     char  caracterDigitado = EOF;
     int   indiceDoVetor = 0;
 
@@ -161,7 +163,7 @@ void validarDataDeNascimento(char * dataReferida){
         } else { continue; }
 
         dataReferida[indiceDoVetor] = 0;
-        printf(inicio "          " inicio, 25, 25);
+        printf(inicio "          " inicio, localizacao, localizacao);
 
         int i = 0;
         for(; i < indiceDoVetor; i++){
@@ -178,7 +180,7 @@ void validarDataDeNascimento(char * dataReferida){
 
 
 
-void validarTelefone(char * telefoneReferido) {
+void validarTelefone(char * telefoneReferido, int localizacao) {
 
     char  caracterDigitado = EOF;
     int   indiceDoVetor = 0;
@@ -204,7 +206,7 @@ void validarTelefone(char * telefoneReferido) {
         } else { continue; }
 
         telefoneReferido[indiceDoVetor] = 0;
-        printf(inicio"               " inicio "(", 25, 25);
+        printf(inicio"               " inicio "(", localizacao, localizacao);
 
         int i = 0;
         for(; i < indiceDoVetor; i++){
@@ -222,7 +224,7 @@ void validarTelefone(char * telefoneReferido) {
 
 
 
-void validarEmail(char * emailReferido){
+void validarEmail(char * emailReferido, int localizacao){
 
     char  caracterDigitado = EOF;
     int   indiceDoVetor = 0;
@@ -260,7 +262,7 @@ void validarEmail(char * emailReferido){
 
         emailReferido[indiceDoVetor] = 0;
 
-        printf(inicio "                              " inicio "%s", 25, 25, emailReferido);
+        printf(inicio "                              " inicio "%s", localizacao, localizacao, emailReferido);
     }
 }
 
@@ -287,16 +289,16 @@ void cadastrarPessoa(PESSOA * pessoasRegistradas){
 
 
         printf(sobe inicio, 6, 25);
-        validarNome(pessoasRegistradas[indiceDoVetor].nome);
+        validarNome(pessoasRegistradas[indiceDoVetor].nome, 25);
 
         printf(desce inicio, 1, 25);
-        validarCPF(pessoasRegistradas[indiceDoVetor].CPF);
+        validarCPF(pessoasRegistradas[indiceDoVetor].CPF, 25);
 
         printf(desce inicio, 1, 25);
-        validarDataDeNascimento(pessoasRegistradas[indiceDoVetor].dataDeNascimento);
+        validarDataDeNascimento(pessoasRegistradas[indiceDoVetor].dataDeNascimento, 25);
 
         printf(desce inicio, 1, 25);
-        validarTelefone(pessoasRegistradas[indiceDoVetor].telefone1);
+        validarTelefone(pessoasRegistradas[indiceDoVetor].telefone1, 25);
 
         printf(desce inicio "Inserir um segundo telefone?", 1, 25);
 
@@ -305,7 +307,7 @@ void cadastrarPessoa(PESSOA * pessoasRegistradas){
 
         if(caracterDigitado == 13){
             printf(inicio "                              " inicio, 25, 25);
-            validarTelefone(pessoasRegistradas[indiceDoVetor].telefone2);
+            validarTelefone(pessoasRegistradas[indiceDoVetor].telefone2, 25);
             break;
         } else if(caracterDigitado == 27 || caracterDigitado == 8){
 
@@ -318,25 +320,25 @@ void cadastrarPessoa(PESSOA * pessoasRegistradas){
         }
 
         printf(desce inicio, 1, 25);
-        validarEmail(pessoasRegistradas[indiceDoVetor].email);
+        validarEmail(pessoasRegistradas[indiceDoVetor].email, 25);
 
         pessoasRegistradas[indiceDoVetor].idDaPessoaReferida = indiceDoVetor + 1;
 
-        printf("\n\n\n\n\n%d\n%s\n%s\n%s\n%s\n%s\n%s\n", pessoasRegistradas[indiceDoVetor].idDaPessoaReferida, pessoasRegistradas[indiceDoVetor].nome, pessoasRegistradas[indiceDoVetor].CPF, pessoasRegistradas[indiceDoVetor].dataDeNascimento, pessoasRegistradas[indiceDoVetor].telefone1, pessoasRegistradas[indiceDoVetor].telefone2, pessoasRegistradas[indiceDoVetor].email);
+        //printf("\n\n\n\n\n%d\n%s\n%s\n%s\n%s\n%s\n%s\n", pessoasRegistradas[indiceDoVetor].idDaPessoaReferida, pessoasRegistradas[indiceDoVetor].nome, pessoasRegistradas[indiceDoVetor].CPF, pessoasRegistradas[indiceDoVetor].dataDeNascimento, pessoasRegistradas[indiceDoVetor].telefone1, pessoasRegistradas[indiceDoVetor].telefone2, pessoasRegistradas[indiceDoVetor].email);
 
-        Sleep(720);
+        Sleep(350);
 
 
 }
 
 
 
-void consultarPessoasCadastradas(PESSOA * pessoasRegistradas){
+int consultarPessoasCadastradas(PESSOA * pessoasRegistradas, bool aprimorado){
 
-    int i = 0;
-    int quantidadeDePessoasEncontradas;
-    int idsPreenchidos[10];
-    char caracterDigitado;
+    int   i = 0;
+    int   quantidadeDePessoasEncontradas;
+    int   idsPreenchidos[10];
+    char  caracterDigitado;
 
     printf(clean);
 
@@ -345,21 +347,21 @@ void consultarPessoasCadastradas(PESSOA * pessoasRegistradas){
     for(; i < 10; i++){
         idsPreenchidos[i] = -1;
         if(pessoasRegistradas[i].idDaPessoaReferida != 0){
-            idsPreenchidos[indiceDoVetor] = i;//pessoasRegistradas[i].idDaPessoaReferida;
+            idsPreenchidos[indiceDoVetor] = i;
             indiceDoVetor++;
         }
     }
     quantidadeDePessoasEncontradas = indiceDoVetor;
 
     if(quantidadeDePessoasEncontradas == 0){
-        printf("Não há pessoas salvas no momento! Registre uma.");
+        printf("Ainda não há pessoas registradas. Por favor insira o dados de uma!");
         while(!_kbhit());
-        return;
+        return -1;
     }
 
     printf("\n\n\n\n\n\n\n\n" sobe, 8);
 
-    printf("┌───────────── <- 1 ──────────────── 2 -> ─────────────┐\n"
+    printf("┌────────────── ← 1 ──────────────── 2 → ──────────────┐\n"
            "│ Nome.................                                │\n"
            "│ CPF..................                                │\n"
            "│ Data de Nascimento...                                │\n"
@@ -456,19 +458,206 @@ void consultarPessoasCadastradas(PESSOA * pessoasRegistradas){
             }
             else if(caracterDigitado == 27) {
                 break; 
-            } 
+            } else if(caracterDigitado == 13 && aprimorado){
+                return pessoaAtual;
+            }
+
             while(_kbhit()) _getch();
         }
+
+        return -1;
+    }
+
+
+
+void excluirDadosDaPessoaReferida(PESSOA * pessoasRegistradas){
+
+    int   indiceDaExclusao = consultarPessoasCadastradas(pessoasRegistradas, true);
+    char  caracterDigitado = EOF;
+
+    if(indiceDaExclusao == -1){
+        return;
+    }
+
+   printf(sobe inicio, 4, 68);
+
+     printf("┌──────────────────────────────────┐\n"
+    inicio"┌─┘  Comfirma a exclusão dos dados?  └─┐\n"
+    inicio"│" fvermelho"                                      "reset"│\n"
+    inicio"└──────────────────────────────────────┘" sobe inicio, 66, 66, 66, 2, 101);
+
+    while(1){
+        caracterDigitado = _getch();
+
+        if(caracterDigitado == 13 || caracterDigitado == 8){
+
+            pessoasRegistradas[indiceDaExclusao].idDaPessoaReferida   =  0;
+            pessoasRegistradas[indiceDaExclusao].nome[0]              =  EOF;
+            pessoasRegistradas[indiceDaExclusao].CPF[0]               =  EOF;
+            pessoasRegistradas[indiceDaExclusao].dataDeNascimento[0]  =  EOF;
+            pessoasRegistradas[indiceDaExclusao].email[0]             =  EOF;
+            pessoasRegistradas[indiceDaExclusao].telefone1[0]         =  EOF;
+            pessoasRegistradas[indiceDaExclusao].telefone2[0]         =  EOF;
+
+            printf(inicio, 69);
+
+            printf("   Dados excluidos com sucesso!   \n" inicio
+            fverde"                                      "reset sobe inicio, 67, 1, 100);
+            Sleep(1200);
+            break;
+
+        } else if(caracterDigitado == 27){
+            return;
+        }
+    }
+}
+
+
+
+void editarDadosDaPessoaRequerida(PESSOA * pessoasRegistradas) {
+
+    int   indiceDaEdicao = consultarPessoasCadastradas(pessoasRegistradas, true);
+    int   posicaoDaEdicao = 1;
+    char  caracterDigitado = EOF;
+
+    if(indiceDaEdicao == -1){
+        return;
+    }
+
+    printf(sobe inicio, 6, 1);
+
+    printf("┌──────────────────── Editar dados ────────────────────┐\n\n"
+           " " inicio " \n"
+           "1" inicio "2\n"
+           "↑" inicio "↓\n"
+           " " inicio " " sobe inicio, 56, 56, 56, 56, 3, 66);
+
+    printf("┌──────────────────────────────────────────────────────┐\n" inicio
+           "│                                                      │\n" inicio
+           "└──────────────────────────────────────────────────────┘" sobe inicio, 66, 66, 1, 67);
+    
+
+    while(1){
+
+
+        caracterDigitado = _getch();
+
+        if(caracterDigitado == 1 || caracterDigitado == 2) {
+
+            switch(posicaoDaEdicao){
+
+                case 1:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao = 6; }
+                else { posicaoDaEdicao ++;}
+                printf(inicio " Nome.................                                " inicio, 67, 67);
+
+                break;
+
+                
+                case 2:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao --; }
+                else { posicaoDaEdicao ++;}
+                printf(inicio " CPF..................                                " inicio, 67, 67);
+                
+                break;
+
+
+                case 3:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao --; }
+                else { posicaoDaEdicao ++;}
+                printf(inicio " Data de Nascimento...                                " inicio, 67, 67);
+                
+                break;
+
+
+                case 4:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao --; }
+                else { posicaoDaEdicao ++;}
+                printf(inicio " Telefone (1).........                                " inicio, 67, 67);
+                
+                break;
+
+
+                case 5:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao --; }
+                else { posicaoDaEdicao ++;}
+                printf(inicio " Telefone (2).........                                " inicio, 67, 67);
+                
+                break;
+
+
+                case 6:
+
+                if(caracterDigitado == 1) { posicaoDaEdicao --; }
+                else { posicaoDaEdicao = 1;}
+                printf(inicio " E-mail...............                                " inicio, 67, 67);
+                
+                break;
+
+            }
+
+        } else if(caracterDigitado == 13 || caracterDigitado == 8) {
+
+            printf(inicio, 90);
+
+            switch(posicaoDaEdicao) {
+
+                case 1:
+
+                    validarNome(pessoasRegistradas[indiceDaEdicao].nome, 90);
+
+                break;
+
+
+                case 2:
+
+                    validarCPF(pessoasRegistradas[indiceDaEdicao].CPF, 90);
+
+                break;
+
+
+                case 3:
+
+                    validarDataDeNascimento(pessoasRegistradas[indiceDaEdicao].dataDeNascimento, 90);
+
+                break;
+
+
+                case 4:
+
+                    validarTelefone(pessoasRegistradas[indiceDaEdicao].telefone1, 90);
+
+                break;
+
+
+                case 5:
+
+                    validarTelefone(pessoasRegistradas[indiceDaEdicao].telefone2, 90);
+
+                break;
+
+
+                case 6:
+
+                    validarEmail(pessoasRegistradas[indiceDaEdicao].email, 90);
+
+                break;
+
+
+            }
+        }
+
 
     }
 
 
 
-
-
-
-
-
+}
 
 
 
@@ -478,6 +667,7 @@ int main() {
     char    opcaoDigitada;
     bool    continuarLaco = true;
     int i = 0;
+    
 
     SetConsoleOutputCP(CP_UTF8);
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -506,28 +696,41 @@ int main() {
 
     if(opcaoDigitada >= 49 && opcaoDigitada <= 53){
         printf("%c", opcaoDigitada);
-        Sleep(500);}
+        Sleep(350);}
 
     while(_kbhit()) _getch();
 
     switch(opcaoDigitada) {
-        case '1':
+
+        case '1': //Cadastrar uma pessoa:
 
             cadastrarPessoa(pessoasRegistradas);
 
         break;
 
-        case '2':
+
+        case '2': //Editar algum dado da pessoa referida:
+
+            editarDadosDaPessoaRequerida(pessoasRegistradas);
+
+        break;
+        
+
+        case '3': //Excluir o dados de uma pessoa registrada
+
+            excluirDadosDaPessoaReferida(pessoasRegistradas);
 
         break;
 
-        case '4':
 
-            consultarPessoasCadastradas(pessoasRegistradas);
+        case '4': //Consultar todas as pessoas que foram registradas:
+
+            consultarPessoasCadastradas(pessoasRegistradas, false);
         
         break;
 
-        case '5':
+
+        case '5': //Finalizar o programa e salvar os dados no arquivo
 
             continuarLaco = false;
 
