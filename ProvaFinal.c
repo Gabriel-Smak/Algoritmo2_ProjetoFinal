@@ -32,13 +32,13 @@
 
     typedef struct PESSOA{
 
-        int idDaPessoaReferida;
-        char nome[31];
-        char CPF[12];
-        char dataDeNascimento[9];
-        char email[31];
-        char telefone1[12];
-        char telefone2[12];
+        unsigned int  idDaPessoaReferida;
+        char          nome[31];
+        char          CPF[12];
+        char          dataDeNascimento[9];
+        char          email[31];
+        char          telefone1[12];
+        char          telefone2[12];
 
     } PESSOA;
 
@@ -217,7 +217,7 @@
                    "│ "negrito"[ 5 ]" reset" ..................... Sair do programa │\n"
                    "└──────────────────────────────────────────────┘");
 
-                printf("\nDigite uma escolha:   ");
+                printf("\nDigite uma escolha: [ _ ]" inicio, 23);
         }
 
 
@@ -491,7 +491,10 @@
         void cadastrarPessoa(PESSOA * pessoasRegistradas) {
 
             int indiceDoVetor      =  0;
+            int maiorIDEncontrado  =  0;
+            int i                  =  0;
             char caracterDigitado  =  EOF;
+            
 
             for(; indiceDoVetor <= 9; indiceDoVetor++){
                 if(pessoasRegistradas[indiceDoVetor].idDaPessoaReferida == 0){break;}
@@ -544,7 +547,13 @@
                 printf(desce inicio, 1, 25);
                 if(!validarEmail(pessoasRegistradas[indiceDoVetor].email, 25)) return;
 
-                pessoasRegistradas[indiceDoVetor].idDaPessoaReferida = indiceDoVetor + 1;
+                for(; i < 10; i++) {
+                    if(pessoasRegistradas[i].idDaPessoaReferida > maiorIDEncontrado) {
+                        maiorIDEncontrado = pessoasRegistradas[i].idDaPessoaReferida;
+                    }
+                }
+
+                pessoasRegistradas[indiceDoVetor].idDaPessoaReferida = maiorIDEncontrado + 1;
 
                 Sleep(350);
 
@@ -895,7 +904,7 @@
 
 
 //    ╔═══════════════════ salvarDadosColetados ═══════════════════╗
-        void salvarDadosColetados(PESSOA * pessoasRegistradas) {
+       void salvarDadosColetados(PESSOA * pessoasRegistradas) {
 
             FILE *arquivo = fopen("BancoDeDados.txt", "w");
             
@@ -955,12 +964,12 @@
     ╔═════════════════════║ Menu da Consulta ║════════════════════╗
                           ╚══════════════════╝
         ┌────────────── ← 1 ──────────────── 2 → ──────────────┐
-        │ Nome.................                                │
-        │ CPF..................                                │
-        │ Data de Nascimento...                                │
-        │ Telefone (1).........                                │
-        │ Telefone (2).........                                │
-        │ E-mail...............                                │
+        │ Nome................. ------------------------------ │
+        │ CPF.................. ------------------------------ │
+        │ Data de Nascimento... ------------------------------ │
+        │ Telefone (1)......... ------------------------------ │
+        │ Telefone (2)......... ------------------------------ │
+        │ E-mail............... ------------------------------ │
         └──────────────────────────────────────────────────────┘
 
     ╚══════════════════════════════════════════════════════════════╝
